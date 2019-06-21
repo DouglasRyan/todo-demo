@@ -6,24 +6,33 @@ class App extends React.Component {
         super();
         this.state = {
             inputValue: undefined,
+            arr: [],
+            nodeli: [],
+            key: 0,
         }
     }
 
     handleSub = (e) => {
         e.preventDefault()
-        console.log(this.state.inputValue)
-    }
 
+        this.setState({
+            arr: [this.state.inputValue, ...this.state.arr],
+            key: this.state.key + 1,
+        })
+
+        setTimeout(() => {
+            let node1 = this.state.arr.map((i) => {
+                return <li key={this.state.key}>{i}</li>
+            }).shift()
+            this.setState({
+                nodeli: [node1, ...this.state.nodeli]
+            })
+        }, 1)
+    }
     handleInputChange = (e) => {
         this.setState({
-            inputValue:e.target.value
+            inputValue: e.target.value
         })
-    }
-
-
-
-    createLi = (i)=>{
-        return <li key={"a"+{i}}>{i}</li>
     }
 
     render() {
@@ -33,11 +42,11 @@ class App extends React.Component {
                     <input
                         onChange={this.handleInputChange}
                     />
-                    <button type={onsubmit}>
-                        AddTodo
-                    </button>
+                    <button type="submit">AddTodo</button>
                 </form>
-
+                <ul>
+                    {this.state.nodeli}
+                </ul>
             </div>
         );
     }
