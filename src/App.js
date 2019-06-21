@@ -6,7 +6,6 @@ class App extends React.Component {
         super();
         this.state = {
             inputValue: undefined,
-            arr: [],
         }
     }
 
@@ -21,6 +20,12 @@ class App extends React.Component {
         })
     }
 
+
+
+    createLi = (i)=>{
+        return <li key={"a"+{i}}>{i}</li>
+    }
+
     render() {
         return (
             <div className="App">
@@ -28,10 +33,8 @@ class App extends React.Component {
                     <input
                         onChange={this.handleInputChange}
                     />
-                    <button
-                        type={onsubmit}
-
-                    >AddTodo
+                    <button type={onsubmit}>
+                        AddTodo
                     </button>
                 </form>
 
