@@ -44,7 +44,7 @@ class App extends React.Component {
                     />
                     <button type="submit">AddTodo</button>
                 </form>
-                <ul>
+                <ul className="ulContainer">
                     {this.state.nodeli}
                 </ul>
             </div>
